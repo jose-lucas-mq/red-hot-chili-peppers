@@ -44,7 +44,6 @@
 
 .navbar {
     top: 0;
-    transition: top 0.3s;
 }
 
 .navbar ul{
@@ -66,6 +65,10 @@
 #active{
     background-color: #e31c3d;
     color: #fff;
+  }
+
+  .navbar a {
+    transition: .1s linear;   
   }
   
   .navbar a:hover {
@@ -287,7 +290,7 @@
 }
 .historia .linha_tempo ul li {
     list-style: none; 
-    margin: -4% 0 0 5%;
+    margin: -4% 0 0 7.5%;
     display: inline-block;
     color: #fff;
     border: #fff 2px solid;

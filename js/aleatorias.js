@@ -11,6 +11,7 @@ window.onload = sorteio();
 
        if (decisao){
          tocando.volume = 0.1;
+         
        }
        else {
          tocando.volume = 0;

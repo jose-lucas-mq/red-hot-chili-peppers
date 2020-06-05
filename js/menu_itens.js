@@ -1,4 +1,4 @@
-var menu_itens = document.querySelectorAll('.navbar a')
+var menu_itens = document.querySelectorAll('#anchor')
 
     menu_itens.forEach(item => {
         item.addEventListener('click', scrollToId);

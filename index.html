@@ -24,6 +24,60 @@
 </head>
 
 <body>
+    <!-- LOGIN -->
+
+    <div id="login" class="modal" style="display: none">
+        <div class="modal login">
+            <i class="fas fa-times" onclick="close_modal_login()"></i>
+            <h1>Faça seu login</h1>
+
+            <form action=".">
+                <input type="email" placeholder="Email" required> <br>
+                <input type="password" id="minha_senha_login" placeholder="Senha" required>
+                <i class="fas fa-eye-slash" id="eye_cort_login" style="font-size: 0px"
+                    onclick="esconder_senha_login()"></i>
+                <i class="fas fa-eye" id="eye_login" style="font-size: 20px" onclick="ver_senha_login()"></i>
+                <br>
+                <input type="submit" value="Entrar">
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- CADASTRO -->
+    <div id="cadastro" class="modal" style="display: none;">
+        <div class="modal login cadastro">
+            <i class="fas fa-times" onclick="close_modal_cadastro()"></i>
+            <h1>Faça seu cadastro</h1>
+
+            <form action=".">
+                <input type="email" placeholder="Email" required> <br>
+                <input type="password" id="minha_senha_cadastro" placeholder="Senha" required>
+                <i class="fas fa-eye-slash" id="eye_cort_cadastro" style="font-size: 0px"
+                    onclick="esconder_senha_cadastro()"></i>
+                <i class="fas fa-eye" id="eye_cadastro" style="font-size: 20px" onclick="ver_senha_cadastro()"></i>
+                <br>
+
+                <input type="text" id="nome" placeholder="Nome" required> <br>
+
+
+                <select id="sexo">
+                    <option value="">Seu sexo</option>
+                    <option value="m">Masculino</option>
+                    <option value="f">Feminino</option>
+                </select>
+
+
+                <input type="text" id="fav_music" placeholder="Música favorita">
+
+                <input type="submit" value="Cadastrar">
+            </form>
+
+        </div>
+    </div>
+
+
     <!--
         MENU
     -->
@@ -34,15 +88,18 @@
             </div>
             <div class="navbar">
                 <ul>
-                    <li><a href="#intro" title="Voltar ao inicio da página" alt="Voltar ao inicio da página">Inicio</a>
+                    <li><a id="anchor" href="#intro" title="Voltar ao inicio da página"
+                            alt="Voltar ao inicio da página">Inicio</a>
                     </li>
-                    <li><a href="#integrantes" title="Ir para página de Integrantes"
+                    <li><a id="anchor" href="#integrantes" title="Ir para página de Integrantes"
                             alt="Ir para página de Integrantes">Integrantes</a></li>
-                    <li><a href="#historia" title="Ir para página de História"
+                    <li><a id="anchor" href="#historia" title="Ir para página de História"
                             alt="Ir para página de História">História</a>
                     </li>
-                    <li><a href="#" id="active" title="Fazer cadastro" alt="Fazer cadastro">Cadastrar</a></li>
-                    <li><a href="#" id="active" title="Fazer login" alt="Fazer login">Entrar</a>
+                    <li><a href="#" id="active" title="Fazer cadastro" alt="Fazer cadastro"
+                            onclick="open_modal_cadastro()">Cadastrar</a></li>
+                    <li><a href="#" id="active" title="Fazer login" alt="Fazer login"
+                            onclick="open_modal_login()">Entrar</a>
                     </li>
 
                 </ul>
@@ -56,11 +113,6 @@
     <!--
         FIM MENU
     -->
-
-
-
-
-    <!-- FIM PLAYER -->
 
     <!--
         INTRODUÇÃO
@@ -485,8 +537,29 @@
 
         </div>
 
-
     </div>
+
+
+    
+
+    <footer>
+        <p>
+            José Lucas M. Queiroz © <span id="ano_footer"></span> <br> <br>
+
+            Todos os direitos reservados <br> <br>
+
+            Feito com ❤ por @joze_lucas <br> <br>
+
+            <a target="_blank" href="#"><i class="fas fab fa-link"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/jos%C3%A9-lucas-marinho-queiroz-8857381ab/"><i class="fab fa-linkedin-in"></i></a>
+            <a target="_blank" href="https://github.com/jose-lucas-mq"><i class="fab fa-github"></i></a>
+            <a target="_blank" href="https://www.instagram.com/joze_lucas/ "><i class="fab fa-instagram"></i></a>
+        </p>
+
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2874820179054!2d-46.66380268538395!3d-23.558116367356718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2b063f663%3A0xc567c0d16d0bc582!2sBandtec%20Digital%20School!5e0!3m2!1spt-BR!2sbr!4v1591333696259!5m2!1spt-BR!2sbr"
+            class="maps"></iframe>
+    </footer>
 
 
 </body>
@@ -494,4 +567,7 @@
 </html>
 
 <script src="./js/menu_itens.js"></script>
+<script src="./js/senha.js"></script>
+<script src="./js/modal.js"></script>
+
 <!-- <script src="./js/aleatorias.js"></script> -->

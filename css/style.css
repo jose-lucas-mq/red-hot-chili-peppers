@@ -7,6 +7,131 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* MODAL LOGIN */
+.modal{
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+
+#login{
+    background-color: rgba(35, 35, 35, .7); 
+}
+
+.login{
+    background-color: #fff;
+    width: 50%;
+    height: 40%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 20px 0px 20px 20px;
+
+
+    text-align: center;
+}
+
+
+.login .fa-times{
+    color: #e31c3d;
+    font-size: 30px;
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    margin: 2px -19px;
+    transform: translate(-50%, -50%);
+}
+
+.login form {
+    text-align: left;
+}
+
+
+
+
+.login form input {
+    margin: 10px;
+    border: #232323 3px solid;
+    /* background: #e31c3d; */
+    padding: 3px;
+
+    outline: none;
+    color: #232323;
+    text-align: center;
+
+    width: 40%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login form .fas{
+    float: right;
+    margin-left: -10%;
+    margin-right: 1%;
+    position: fixed;
+
+    cursor: pointer;
+    transition: linear 3ms;
+}
+
+.login input[type = submit]{
+    background: #e31c3d;
+    color: #fff;
+    width: 45%;
+    cursor: pointer;
+    transition: linear 3ms;
+}
+
+/* CUIDANDO DO HOVER */
+.login input[type = submit]:hover{
+    background: #232323;
+    color: #fff;
+}
+
+.login form .fas:hover{
+    color: #e31c3d;
+}
+
+
+/* MODAL CADASTRO */
+#cadastro{
+    background-color: rgba(35, 35, 35, .7); 
+}
+
+.cadastro{
+    background-color: #fff;
+    width: 50%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 20px 0px 20px 20px;
+
+
+    text-align: center;
+}
+
+.cadastro form select{
+    margin: 10px;
+    border: #232323 3px solid;
+    /* background: #e31c3d; */
+    padding: 3px;
+
+    outline: none;
+    color: #232323;
+    text-align: center;
+
+    width: 40%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* PLAYER */
 
 #tocando{
@@ -317,6 +442,45 @@
     width: 100%;
     height: 250px;
     border-radius: 0 0 10px 10px;
+}
+
+
+
+/* RODAPE */
+
+footer{
+    width: 100%;
+    float: left;
+    background-color: #232323;
+    color: #fff;
+}
+
+footer p{
+    padding: 90px;
+    float: left;
+}
+
+footer .fab{
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+    float: left;
+
+    transition: linear 3ms;
+}
+
+footer .maps{
+    height: 250px;
+    width: 750px;
+    margin: 85px 50px 25px 50px;
+    
+}
+
+
+/* HOVER NO RODAPE */
+
+footer .fab:hover{
+    color: #e31c3d;
 }
 
 

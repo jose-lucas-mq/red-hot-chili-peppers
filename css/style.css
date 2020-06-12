@@ -1,3 +1,9 @@
+/* NOTEBOOKS == PADRÃO*/
+/* 
+*
+*
+*
+*/
 
 /* RESET */
 *{
@@ -25,7 +31,7 @@
 .login{
     background-color: #fff;
     width: 50%;
-    height: 40%;
+    height: auto;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -51,8 +57,18 @@
     text-align: left;
 }
 
-
-
+/* INPUT SENHA */
+  
+  .toggle {
+    position: absolute;
+    right: 20px;
+    align-self: center;
+  }
+  
+.toggle i {
+    font-size: 20px;
+    margin-top: -49px;
+  }
 
 .login form input {
     margin: 10px;
@@ -69,14 +85,12 @@
     transform: translate(-50%, -50%);
 }
 
-.login form .fas{
-    float: right;
-    margin-left: -10%;
-    margin-right: 1%;
+.login form .far{
+    margin-left: -32%;
     position: fixed;
-
     cursor: pointer;
     transition: linear 3ms;
+    z-index: auto;
 }
 
 .login input[type = submit]{
@@ -85,6 +99,7 @@
     width: 45%;
     cursor: pointer;
     transition: linear 3ms;
+    margin-top: 20px;
 }
 
 /* CUIDANDO DO HOVER */
@@ -93,7 +108,7 @@
     color: #fff;
 }
 
-.login form .fas:hover{
+.login form .far:hover{
     color: #e31c3d;
 }
 
@@ -106,7 +121,7 @@
 .cadastro{
     background-color: #fff;
     width: 50%;
-    height: 60%;
+    height: auto;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -130,6 +145,12 @@
     width: 40%;
     margin-left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.cadastro span{
+    padding: 5px;
+    margin-left: 30%;
+    margin-bottom: 30px;
 }
 
 /* PLAYER */
@@ -330,7 +351,7 @@
     background-color: #fff;
     text-align: center;
     border-radius: 10px 10px 0 0;
-    margin: 100px 43px;
+    margin: 2% 12%;
 }
 .card .imagem{
     background-repeat: no-repeat;
@@ -418,10 +439,10 @@
 }
 
 .historia .card{
-    width: 35%;
+    width: 100%;
     height: auto;
     border-radius: 0px 10px 10px 10px;
-    margin: 50px 50px;
+    margin: 2% auto;
     float: left; 
 }
 
@@ -456,8 +477,9 @@ footer{
 }
 
 footer p{
-    padding: 90px;
+    margin-top: 15%;
     float: left;
+    width: 30%;
 }
 
 footer .fab{
@@ -470,9 +492,10 @@ footer .fab{
 }
 
 footer .maps{
-    height: 250px;
-    width: 750px;
-    margin: 85px 50px 25px 50px;
+    width: 55%;
+    height: 295px;
+    margin: 10% 50px 25px 50px;
+}
     
 }
 
@@ -484,26 +507,12 @@ footer .fab:hover{
 }
 
 
+/* CELULARES */
+@media screen and (min-width: 480px) {
+	
+}
 
+/* TABLETS */
+@media screen and (min-width: 768px) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

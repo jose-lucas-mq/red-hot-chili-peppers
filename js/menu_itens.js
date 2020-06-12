@@ -1,4 +1,4 @@
-var menu_itens = document.querySelectorAll('#anchor')
+let menu_itens = document.querySelectorAll('#anchor')
 
     menu_itens.forEach(item => {
         item.addEventListener('click', scrollToId);
@@ -8,11 +8,11 @@ var menu_itens = document.querySelectorAll('#anchor')
         event.preventDefault();
 
 
-        var element = event.target;
+        let element = event.target;
 
-        var id_elemento = element.getAttribute('href');
+        let id_elemento = element.getAttribute('href');
         
-        var divTo = document.querySelector(id_elemento).offsetTop;
+        let divTo = document.querySelector(id_elemento).offsetTop;
         
 
 

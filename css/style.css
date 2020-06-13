@@ -21,7 +21,7 @@
     position: fixed;
     left: 0px;
     top: 0px;
-    z-index: 1;
+    z-index: 3;
 }
 
 #login{
@@ -176,6 +176,7 @@
     height: 51px;
     position: fixed;
     float: left;
+    z-index: 2;
   }
 
 .header h1{
@@ -352,6 +353,7 @@
     text-align: center;
     border-radius: 10px 10px 0 0;
     margin: 2% 12%;
+    
 }
 .card .imagem{
     background-repeat: no-repeat;
@@ -413,6 +415,7 @@
     background-color: #e31c3d;
     width: 100%;
 }
+
 
 #target_back{
     float: left;
@@ -497,10 +500,6 @@ footer .maps{
     margin: 10% 50px 25px 50px;
 }
     
-}
-
-
-/* HOVER NO RODAPE */
 
 footer .fab:hover{
     color: #e31c3d;
@@ -509,7 +508,6 @@ footer .fab:hover{
 
 /* CELULARES */
 @media screen and (min-width: 480px) {
-	
 }
 
 /* TABLETS */

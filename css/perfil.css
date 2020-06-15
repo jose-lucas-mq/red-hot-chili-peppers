@@ -79,7 +79,55 @@
     display: block;
 }
 
+.discografia .content p{
+    float: left;
+    width: 50%;
+}
 
+.discografia .content p a{
+    color: #e31c3d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.discografia .content .fa-spotify{
+    color: #1db954;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.discografia .content iframe{
+    float: right;
+    width: 45%;
+    height: 60%;
+    margin: 10px;
+}
+
+.discografia .content table{
+    float: right;
+    width: 45%;
+    
+    padding: 20px;
+    text-align: center;
+}
+
+.discografia .content table th{
+    background-color: #e31c3d;
+    color: #232323;
+    padding: 0;
+}
+
+.discografia .content table tr{
+    background: #808080;
+}
+
+.discografia .content table i{
+    color: #e31c3d;
+}
+
+.discografia .content table i:hover{
+    color: #232323;
+}
 
 /* SOBRE */
 
@@ -144,3 +192,11 @@
     overflow-x: hidden;
     margin-right: 3%;
 }
+
+#faculdade{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    color: #e31c3d;
+}
+

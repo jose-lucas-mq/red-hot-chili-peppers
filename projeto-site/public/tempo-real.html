@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página com exemplo de gráfico p/ tempo real</title>
+
+    <!-- script do google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+    
+    <style>
+        /* Classes CSS para exemplos de alertas */
+
+        .normal {
+            background-color: white;
+        }
+
+        .alerta {
+            background-color:tomato;
+        }
+    </style>
+
+</head>
+
+<body onload="atualizarGrafico()">
+    <div>
+        Olá, <b id="b_usuario"></b>  
+        <a href="#" onclick="logoff()" style="color:maroon">[Sair]</a>
+
+        <a href="grafico-chartjs.html">Gráfico de histórico recente</a>
+    </div>
+    
+    <div id="div_alerta" class="alerta"></div>
+
+    <div style="width:75%;">
+        <div id="div_temperatura">Temperatura sendo obtida...</div>
+        <div id="div_umidade">Umidade sendo obtida...</div>
+    </div>
+</body>
+
+</html>
+<script>
+
+    let usuario;
+
+    verificar_autenticacao();
+
+
+    // Não mexa nestas 2 linhas! 
+    //google.load('current', {'packages':['gauge']});
+    //google.charts.setOnLoadCallback(obterDadosGrafico);
+    google.load('visualization', '1', {
+        packages: ['corechart','gauge'],
+        callback: obterDadosGrafico
+    });
+    // Não mexa nessas 2 linhas! 
+
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    function atualizarGrafico() {
+        obterDadosGrafico();
+        setTimeout(atualizarGrafico, 5000);
+    }
+
+    // altere aqui as configurações do gráfico
+    // (tamanhos, cores, textos, etc)
+    function configurarGrafico() {
+        // os valores de yellowTo, yellowTo, redFrom e redTo
+        // podem vir de um outro EndPoint
+        var configuracoes = {
+            temperatura: {
+                width: 400, 
+                height: 120,
+                yellowFrom:00, 
+                yellowTo: 20,                
+                yellowColor: 'cyan',
+                redFrom: 40, 
+                redTo: 60,
+                max: 60,
+                minorTicks: 5
+            },
+            umidade: {
+                width: 400, 
+                height: 120,
+                yellowFrom: 00, 
+                yellowTo: 50,                
+                yellowColor: 'cyan',               
+                redFrom: 85, 
+                redTo: 100,
+                max: 100,
+                minorTicks: 5
+            },
+        }
+
+        return configuracoes;
+    }
+
+    // altere aqui como os dados serão exibidos
+    // e como são recuperados do BackEnd
+    function obterDadosGrafico() {
+        var dados;
+
+        fetch('/leituras/tempo-real', {cache:'no-store'}).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    
+                    console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+
+                    // aqui, após registro. use os nomes 
+                    // dos atributos que vem no JSON 
+                    // que gerou na consulta ao banco de dados
+                    dadosTemperatura = google.visualization.arrayToDataTable([
+                        ['Label', 'Value'],
+                        ['Temperatura', resposta.temperatura]
+                    ]);
+
+                    dadosUmidade = google.visualization.arrayToDataTable([
+                        ['Label', 'Value'],
+                        ['Umidade', resposta.umidade]
+                    ]);
+
+                    var dados = {
+                        temperatura: dadosTemperatura,
+                        umidade: dadosUmidade
+                    }
+                    
+                    alertar(resposta.temperatura, resposta.umidade);
+                    plotarGrafico(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+    }
+
+    function alertar(temperatura, umidade) {
+        // ideal que venham de algum EndPoint
+        var limites = { 
+            max_temperatura: 40,
+            min_temperatura: 20,
+            max_umidade: 80,
+            min_umidade: 50,            
+        };
+
+        var mensagem = '';
+        if (temperatura > limites.max_temperatura) {
+            mensagem += '* Temperatura alta demais! <br>';
+        } 
+        if (umidade > limites.max_umidade) {
+            mensagem += '* Umidade alta demais! <br>';
+        } 
+        if (temperatura < limites.min_temperatura) {
+            mensagem = '* Temperatura baixa demais! <br>';
+        } 
+        if (umidade < limites.min_umidade) {
+            mensagem = '* Umidade baixa demais! <br>';
+        }
+                
+        div_alerta.innerHTML = mensagem;
+    }
+
+    // só altere aqui se souber o que está fazendo!
+    function plotarGrafico(dados) {
+        console.log('iniciando plotagem dos gráficos...');
+
+        var chartTemperatura = new google.visualization.Gauge(div_temperatura);
+        chartTemperatura.draw(dados.temperatura, configurarGrafico().temperatura);
+
+        var chartUmidade = new google.visualization.Gauge(div_umidade);
+        chartUmidade.draw(dados.umidade, configurarGrafico().umidade);
+    }
+</script>

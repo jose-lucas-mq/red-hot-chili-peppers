@@ -22,6 +22,8 @@
     <meta name="author" content="José Lucas, José, BandTec">
 
 
+    <script type="text/javascript" src="../funcoes.js"></script>
+
     <title>Red Hot Chili Peppers</title>
 </head>
 
@@ -44,7 +46,7 @@
                             o autor</a></li>
 
                     <li><a href="perfil.html" id="active" title="Ver meu perfil" alt="Ver meu perfil">Perfil</a></li>
-                    <li><a href="#" id="active" title="Fazer o log out" alt="Fazer o log out">Sair</a>
+                    <li onclick="logoff()"><a href="#" id="active" title="Fazer o log out" alt="Fazer o log out">Sair</a>
                     </li>
 
                 </ul>
@@ -59,13 +61,13 @@
 
     <div class="container">
         <div class="intro" id="intro">
-            <h1>Olá<br><span id="nome_usuario">Joaozinho</span></h1>
+            <h1>Olá<br><span id="span_nome_usuario">Joaozinho</span></h1>
 
             <p>
 
                 &emsp;Esta página da banda foi feita de um <b>fã para outros fãs</b>, então se você se considera um
                 aproveite,
-                para saber mais sobre este projeto acesse a página <a href="sobre.html" style="float: none;">sobre o
+                para saber mais sobre este projeto acesse a página <a href="#sobre" id="anchor" style="float: none;">sobre o
                     autor</a> nela poderá
                 ver como
                 surgiu essa ideia e como foi seu desenvolvimento. <br>
@@ -1299,5 +1301,7 @@
 </body>
 
 </html>
+
+<script> verificar_autenticacao();</script>
 
 <script src="./js/menu_itens.js"></script>

@@ -1,0 +1,16 @@
+1. Caso exista, apagar a pasta "node_modules"
+2. Caso exista, apagar o arquivo "package-lock.json"
+
+3. executar "npm i" e aguardar uns instantes, pois fará uns downloads
+
+4. executar "npm i -g nodemon"
+
+5. executar 
+nodemon --exec npm start
+  OU, CASO NÃO FUNCIONE
+npm start
+
+6. p/ testar acesse esses endereços no navegador:
+  localhost:3000/usuarios
+  localhost:3000/leituras/ultimas
+Deve aparecer o conteúdo das tabelas de usuário e de aquisição de dados

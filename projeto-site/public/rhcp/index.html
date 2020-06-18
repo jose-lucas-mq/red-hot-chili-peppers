@@ -31,17 +31,17 @@
             <i class="fas fa-times" onclick="close_modal_login()"></i>
             <h1>Faça seu login</h1>
 
-            <form action=".">
-                <input type="email" placeholder="Email" required> <br>
+            <form id="form_login" method="post" onsubmit="return entrar()">
+                <input type="email" name="login" placeholder="Email" required> <br>
                 <div class="inputBox">
-                    <input type="password" maxlength="20" placeholder="Digite sua senha" id="password_log" />
+                    <input type="password" name="senha" maxlength="20" placeholder="Digite sua senha" id="password_log" />
                     <div onclick="showHide_log()" class="toggle">
                         <i class="far fa-eye"></i>
                     </div>
                 </div>
                 <br>
 
-                <input type="submit" value="Entrar">
+                <button class="button" id="btn_entrar">Entrar</button>
             </form>
 
         </div>
@@ -54,11 +54,11 @@
             <i class="fas fa-times" onclick="close_modal_cadastro()"></i>
             <h1>Faça seu cadastro</h1>
 
-            <form action=".">
-                <input type="email" id="inp_email" placeholder="Email" onkeyup="email()"> <br>
+            <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                <input type="email" name="login" id="login" placeholder="Email" onkeyup="email()"> <br>
 
                 <div class="inputBox">
-                    <input type="password" maxlength="20" onkeyup="f_senha()" placeholder="Digite sua senha"
+                    <input type="password" name="senha" maxlength="20" onkeyup="f_senha()" placeholder="Digite sua senha"
                         id="password" />
                     <div onclick="showHide()" class="toggle">
                         <i class="far fa-eye"></i>
@@ -66,17 +66,17 @@
                 </div>
 
 
-                <input type="text" id="nome" placeholder="Nome"> <br>
+                <input type="text" name="nome" id="nome" placeholder="Nome"> <br>
 
 
-                <select id="sexo">
+                <select id="sexo" name="sexo">
                     <option value="">Seu sexo</option>
-                    <option value="m">Masculino</option>
-                    <option value="f">Feminino</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
                 </select>
 
 
-                <select id="fv_album">
+                <select id="fv_album" name="fav_album">
                     <option value="">Álbum favorito</option>
                     <option value="californaction">Californaction</option>
                     <option value="stadium_arcadium">Stadium Arcadium</option>
@@ -88,7 +88,7 @@
 
                 <span id="msg" style="display: none"></span>
 
-                <input type="submit" value="Cadastrar">
+                <button class="button" id="btn_entrar">Cadastrar</button>
             </form>
 
         </div>
@@ -581,9 +581,73 @@
 
 </html>
 
+<script>
+    function entrar() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.email_fan;
+                    sessionStorage.nome_usuario_meuapp = json.nome_fan;
+                    sessionStorage.sexo_usuario_meuapp = json.sexo_fan;
+                    sessionStorage.album_usuario_meuapp = json.album_fav;
+                    
+                    
+                    window.location.href = 'index_perfil.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+    function cadastrar() {
+
+        debugger;
+        
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='index_perfil.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                     alert(resposta);
+                });
+            }
+        });
+
+        return false;
+    }
+</script>
+
 <script src="./js/menu_itens.js"></script>
 <script src="./js/senha.js"></script>
 <script src="./js/modal.js"></script>
 <script src="./js/validation.js"></script>
 
-<!-- <script src="./js/aleatorias.js"></script> -->section
+<!-- <script src="./js/aleatorias.js"></script> -->

@@ -31,12 +31,12 @@ ano_footer.innerHTML = `${new Date().getFullYear()}`;
 const show = document.querySelector(".far");
 
   function showHide() {
-    if (password.type === "password") {
-      password.setAttribute("type", "text");
+    if (senha.type === "password") {
+      senha.setAttribute("type", "text");
       show.classList.remove("fa-eye");
       show.classList.add("fa-eye-slash");
     } else {
-      password.setAttribute("type", "password");
+      senha.setAttribute("type", "password");
       show.classList.remove("fa-eye-slash");
       show.classList.add("fa-eye");
     }

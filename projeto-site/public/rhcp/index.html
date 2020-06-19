@@ -55,11 +55,11 @@
             <h1>Faça seu cadastro</h1>
 
             <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-                <input type="email" name="login" id="login" placeholder="Email" onkeyup="email()"> <br>
+                <input type="email" id="email" name="login"  placeholder="Email" > <br>
 
                 <div class="inputBox">
-                    <input type="password" name="senha" maxlength="20" onkeyup="f_senha()" placeholder="Digite sua senha"
-                        id="password" />
+                    <input type="password" name="senha" id="senha" maxlength="20"  placeholder="Digite sua senha"
+                         />
                     <div onclick="showHide()" class="toggle">
                         <i class="far fa-eye"></i>
                     </div>
@@ -76,7 +76,7 @@
                 </select>
 
 
-                <select id="fv_album" name="fav_album">
+                <!-- <select id="fav_album" name="fav_album">
                     <option value="">Álbum favorito</option>
                     <option value="californaction">Californaction</option>
                     <option value="stadium_arcadium">Stadium Arcadium</option>
@@ -84,7 +84,7 @@
                     <option value="the_getaway">The Getaway</option>
                     <option value="one_hot_minute">One Hot Minute</option>
                     <option value="by_the_way">By The Way</option>
-                </select> <br>
+                </select> <br> -->
 
                 <span id="msg" style="display: none"></span>
 
@@ -620,8 +620,6 @@
 
     function cadastrar() {
 
-        debugger;
-        
         var formulario = new URLSearchParams(new FormData(form_cadastro));
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -630,7 +628,7 @@
             
             if (response.ok) {
 
-                window.location.href='index_perfil.html';
+                window.location.href='perfil.html';
 
             } else {
 

@@ -200,3 +200,27 @@
     color: #e31c3d;
 }
 
+
+/* DADOS DO PERFIL */
+
+.intro {
+    float: left;
+    height: 300px;
+    padding: 20px;
+    width: 30%;
+    border-radius: 10px;
+    border: #232323 3px solid;
+    margin-bottom: 100px;
+}
+
+.title{
+    float: right;
+    width: 40%;
+    margin-top: 80px;
+}
+
+.video{
+    float: right;
+    margin-top: 10px;    
+}
+

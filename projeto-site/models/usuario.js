@@ -32,13 +32,12 @@ module.exports = (sequelize, DataTypes) => {
 			field: 'sexo_fan',
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		fav_album: {
+			field: 'album_fav',
+			type: DataTypes.STRING,
+			allowNull: false
 		}
-		// ,
-		// fav_album: {
-		// 	field: 'album_fav',
-		// 	type: DataTypes.STRING,
-		// 	allowNull: false
-		// }
 	}, 
 	{
 		tableName: 'tb_fan', 

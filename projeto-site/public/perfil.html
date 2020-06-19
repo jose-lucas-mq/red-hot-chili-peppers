@@ -21,6 +21,8 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="José Lucas, José, BandTec">
 
+       <script type="text/javascript" src="./js/funcoes.js"></script>
+
 
     <title>Red Hot Chili Peppers | Perfil</title>
 </head>
@@ -36,7 +38,7 @@
                 <ul>
 
                     <li><a href="index_perfil.html" id="active" title="Ver meu perfil" alt="Ver meu perfil">Voltar</a></li>
-                    <li><a href="#" id="active" title="Fazer o log out" alt="Fazer o log out">Sair</a></li>
+                    <li><a href="#" id="active" title="Fazer o log out" onclick="logoff()" alt="Fazer o log out">Sair</a></li>
 
                 </ul>
             </div>
@@ -46,7 +48,27 @@
 
     <div class="container">
         <div class="intro" id="intro">
+            <h3>Seu nome:</h3>
+            <h5 id="nome_fan">josejosejose</h5>
+
+            <h3>Seu email:</h3>
+            <h5 id="email_fan">josejose@gmailc.om</h5>
+
+            <h3>Seu sexo:</h3>
+            <h5 id="sexo_fan">sexoMMM</h5>
+
+            <h3>Seu álbum favorito:</h3>
+            <h5 id="album_fan">Californaction</h5>
+
         </div>
+
+        <h3 class="title">Te recomendo essa música hoje <i class="fas fa-chevron-down"></i></h3>
+
+        <div class="video" id="video">
+                
+        </div>
+
+        
     </div>
 
 
@@ -80,3 +102,7 @@
 </html>
 
 <script src="./js/menu_itens.js"></script>
+<script src="./js/video_random.js"></script>
+
+<script>r_video();</script>
+<script>verificar_autenticacao();</script>

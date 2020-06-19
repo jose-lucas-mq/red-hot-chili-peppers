@@ -1,12 +1,651 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+    <!-- Icones do FontAwesome -->
+    <script src="https://kit.fontawesome.com/c8a41eade0.js" crossorigin="anonymous"></script>
+
+    <!-- Meta Tags SEO -->
+
+    <meta name="description" content="Red Hot Chili Peppers" />
+    <meta name="keywords"
+        content="red hot chili peppers, red hot, rhcp, one page, jose Lucas, red, hot, chili, peppers" />
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="José Lucas, José, BandTec">
+
+
+    <title>Red Hot Chili Peppers</title>
 </head>
 
 <body>
-  HTML funcionando! te juro!
+    <!-- LOGIN -->
+
+    <div id="login" class="modal" style="display: none">
+        <div class="modal login">
+            <i class="fas fa-times" onclick="close_modal_login()"></i>
+            <h1>Faça seu login</h1>
+
+            <form id="form_login" method="post" onsubmit="return entrar()">
+                <input type="email" name="login" placeholder="Email" required> <br>
+                <div class="inputBox">
+                    <input type="password" name="senha" maxlength="20" placeholder="Digite sua senha" id="password_log" />
+                    <div onclick="showHide_log()" class="toggle">
+                        <i class="far fa-eye"></i>
+                    </div>
+                </div>
+                <br>
+
+                <button class="button" id="btn_entrar">Entrar</button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- CADASTRO -->
+    <div id="cadastro" class="modal" style="display: none;">
+        <div class="modal login cadastro">
+            <i class="fas fa-times" onclick="close_modal_cadastro()"></i>
+            <h1>Faça seu cadastro</h1>
+
+            <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                <input type="email" id="email" name="login"  placeholder="Email" > <br>
+
+                <div class="inputBox">
+                    <input type="password" name="senha" id="senha" maxlength="20"  placeholder="Digite sua senha"
+                         />
+                    <div onclick="showHide()" class="toggle">
+                        <i class="far fa-eye"></i>
+                    </div>
+                </div>
+
+
+                <input type="text" name="nome" id="nome" placeholder="Nome"> <br>
+
+
+                <select id="sexo" name="sexo">
+                    <option value="">Seu sexo</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+
+
+                <select id="fv_album" name="fv_album">
+                    <option value="">Álbum favorito</option>
+                    <option value="californaction">Californaction</option>
+                    <option value="stadium_arcadium">Stadium Arcadium</option>
+                    <option value="blood_sugar_sex_magik">Blood Suggar Sex Magik</option>
+                    <option value="the_getaway">The Getaway</option>
+                    <option value="one_hot_minute">One Hot Minute</option>
+                    <option value="by_the_way">By The Way</option>
+                </select> <br>
+
+                <span id="msg" style="display: none"></span>
+
+                <button class="button" id="btn_entrar">Cadastrar</button>
+            </form>
+
+        </div>
+    </div>
+
+   
+
+    <!--
+        MENU
+    -->
+    <div class="header">
+        <div class="container">
+            <div>
+                <h1 class="titulo"> <span>Red</span> Hot <span>Chili</span> Peppers</h1>
+            </div>
+            <div class="navbar lg-menu">
+                <ul>
+                    <li><a id="anchor" href="#intro" title="Voltar ao inicio da página"
+                            alt="Voltar ao inicio da página">Inicio</a>
+                    </li>
+                    <li><a id="anchor" href="#integrantes" title="Ir para página de Integrantes"
+                            alt="Ir para página de Integrantes">Integrantes</a></li>
+                    <li><a id="anchor" href="#historia" title="Ir para página de História"
+                            alt="Ir para página de História">História</a>
+                    </li>
+                    <li><a href="#" id="active" title="Fazer cadastro" alt="Fazer cadastro"
+                            onclick="open_modal_cadastro()">Cadastrar</a></li>
+                    <li><a href="#" id="active" title="Fazer login" alt="Fazer login"
+                            onclick="open_modal_login()">Entrar</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- TOCANDO MUSICAS ALEATORIAS -->
+
+        <audio src="" controls autoplay id="tocando"></audio>
+    </div>
+    <!--
+        FIM MENU
+    -->
+
+    <!--
+        INTRODUÇÃO
+    -->
+
+    <div class="container">
+        <section class="intro" id="intro">
+            <h1>O que é<br> Red Hot Chili Peppers?</h1>
+
+            <p>
+                &emsp;Red Hot Chili Peppers (também conhecido como <b>Red Hot</b> ou <b>RHCP</b>) é uma banda de rock
+                dos Estados Unidos formada em Los Angeles, Califórnia, em 13 de fevereiro de 1983, considerada uma das
+                maiores bandas da história do rock. O estilo musical do grupo consiste principalmente no <b>funk
+                    rock</b>, bem como elementos de outros gêneros, tais como punk, rock alternativo, rap rock e rock
+                psicodélico. A banda é constituída pelos membros fundadores <b>Anthony Kiedis</b> (vocais) e <b>Flea</b>
+                (baixo), juntamente com o baterista de longa data <b>Chad Smith</b> e o guitarrista <b>John
+                    Frusciante</b>.
+                <br>
+
+                <a href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers" title="Fonte de pesquisa"
+                    alt="Fonte de pesquisa"> Fonte</a>
+            </p>
+
+            <div class="redes">
+                <ul>
+                    <li><a href="https://open.spotify.com/artist/0L8ExT028jH3ddEcZwqJJ5"> <i
+                                class="fab fa-spotify"></i></a></li>
+                    <li><a href="https://www.instagram.com/chilipeppers/"> <i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCEuOwB9vSL1oPKGNdONB4ig"> <i
+                                class="fab fa-youtube"></i></a></li>
+                    <li><a
+                            href="https://www.facebook.com/ChiliPeppers/?hc_ref=ARQ4sJNvGtMZh_KqGpOwmrRSOBLl_na7yU9nz-77NsQ6o4VjFa3h_6tr7iVlMUQy1AM&fref=nf&__tn__=kC-R">
+                            <i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/chilipeppers?lang=pt"> <i class="fab fa-twitter"></i></a></li>
+                </ul>
+
+            </div>
+        </section>
+        <img src="./img/bg_intro.gif" class="img_gif" title="Gif com a discografia da banda"
+            alt="Gif com a discografia da banda" />
+    </div>
+    </div>
+
+    <!--
+    FIM INTRO
+-->
+
+    <!--
+    NEWSLETTER
+-->
+
+    <div class="newsletter">
+        <div class="container">
+            <h1>Não perca novidades sobre a banda!</h1>
+
+            <form>
+                <input type="text" placeholder="Digite seu email aqui">
+
+                <button>Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!--
+    FIM NEWSLETTER
+-->
+
+    <!-- INTEGRANTES -->
+
+    <section class="integrantes" id="integrantes">
+
+        <h1>Esses são os <span> chili peppers </span></h1>
+
+        <div class="container">
+
+            <!-- CARD KIEDIS-->
+            <div class="card">
+                <img src="./img/kiedis.jpg" alt="Imagem de Kiedis" class="imagem" />
+                <h1>Anthony Kiedis</h1>
+                <h3>Vocalista</h3>
+                <p>
+                    &emsp;Anthony Kiedis é um cantor e compositor americano. É o vocalista, letrista e fundador da banda
+                    Red
+                    Hot Chili Peppers, banda que fundou em 1983 junto a seus amigos Flea, Hillel Slovak e Jack Irons.
+                    Kiedis escreveu em 2004 sua autobiografia, <a
+                        href="https://www.amazon.com.br/Scar-Tissue-mem%C3%B3rias-vocalista-Peppers/dp/8581744249/ref=sr_1_1?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2EC8FM271GCWO&keywords=scar+tissue&qid=1587523827&sprefix=scar%2Caps%2C474&sr=8-1"
+                        alt="Você encontra ela aqui" title="Livro na loja da Amazon"> Scar Tissue</a>. No livro, Anthony
+                    escreve sobre sua difícil vida, compartilha abertamente sobre o vício das drogas e conta sua
+                    dificuldade para pará-lo. Além disso, fala sobre sua amizade duradoura com Flea, sua infância e o
+                    início, onde tudo começou, o quão foi complicado colocar a banda, Red Hot, no topo.
+
+                </p>
+                <ul>
+
+                    <li><a href="https://twitter.com/kiedis" title="Twitter de Kiedis"> <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- CARD FLEA -->
+
+            <div class="card">
+                <img src="./img/flea.jpg" alt="Imagem de Flea" class="imagem" />
+                <h1>Flea</h1>
+                <h3>Baixista</h3>
+                <p>
+                    &emsp; Michael Peter Balzary (Melbourne, 16 de outubro de 1962), mais conhecido pelo seu nome
+                    artístico
+                    Flea, é um baixista australiano, considerado um dos maiores baixistas da história da música. Flea,
+                    que também toca o trompete e ocasionalmente trabalha como ator, é mais conhecido como baixista,
+                    co-fundador e um dos compositores da banda de rock alternativo Red Hot Chili Peppers. Flea também é
+                    o co-fundador da <a
+                        href="https://www.rhodesschoolofmusic.com/?gclid=Cj0KCQjws_r0BRCwARIsAMxfDRhITUitWLxpegBjLvMNfOKxzdINB2Fj-N66QIxIT9llHVQZr5pxXeQaArKcEALw_wcB">
+                        Silverlake Conservatory of Music </a>, uma organização sem fins lucrativos de educação musical
+                    fundada em 2001.
+
+
+                </p>
+                <ul>
+                    <li><a href="https://pt-br.facebook.com/flea/" title="Facebook de Flea"> <i
+                                class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li><a href="https://twitter.com/flea333" title="Twitter de Flea"> <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li><a href="https://www.instagram.com/flea333/" title="Instagram de Flea"> <i
+                                class="fab fa-instagram"></i> </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- CARD CHAD-->
+
+            <div class="card">
+                <img src="./img/chad.jpg" alt="Imagem de Chad" class="imagem" />
+                <h1>Chad Smith</h1>
+                <h3>Baterista</h3>
+                <p>
+                    &emsp;Chad Gaylord Smith, ou como é mais conhecido, Chad Smith (Saint Paul, 25 de Outubro de 1961),
+                    é um
+                    baterista americano, mais conhecido como membro de longa data da banda californiana de rock Red Hot
+                    Chili Peppers, com quem se juntou em 1988 e permanece até hoje. Smith se juntou ao supergrupo <a
+                        href="https://pt.wikipedia.org/wiki/Chickenfoot"> Chickenfoot </a> em 2008, quando os Chili
+                    Peppers estavam em hiato.
+
+                </p> <br><br><br><br> <br> <br>
+                <ul>
+                    <li><a href="https://www.facebook.com/RHCPChad/" title="Facebook de Chad"> <i
+                                class="fab fa-facebook"></i> </a>
+                    </li>
+                    <li><a href="https://twitter.com/RHCPchad" title="Twitter de Chad"> <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li><a href="https://www.instagram.com/chadsmithofficial/" title="Instagram de Chad"> <i
+                                class="fab fa-instagram"></i> </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- CARD JOHN FRUSCIANTE -->
+
+            <div class="card">
+                <img src="./img/john.jpg" alt="Imagem de John Frusciante" class="imagem" />
+                <h1>John Frusciante</h1>
+                <h3>Guitarrista</h3>
+                <p>
+                    &emsp;John Anthospotny Frusciante (Nova Iorque, 5 de março de 1970) é um guitarrista, cantor,
+                    compositor,
+                    pintor e produtor musical norte-americano. John é guitarrista da banda Red Hot Chili Peppers, com
+                    quem gravou 5 álbuns. Frusciante juntou-se aos Red Hot Chili Peppers aos 18 anos, entrando pela
+                    primeira vez no álbum Mother's Milk de 1989. O seguinte álbum, Blood Sugar Sex Magik foi um completo
+                    sucesso. John, então, deixou a banda por um longo período, retornando em 1998, para a gravação do
+                    álbum <a href="https://www.youtube.com/playlist?list=PL8P8cl_DddmdfMpYJx-52udauhZvFnAfq">
+                        Californication </a>.
+                </p>
+
+                <br>
+                <ul>
+                    <li><a href="https://pt-br.facebook.com/Johnfrusciante/" title="Facebook de John"> <i
+                                class="fab fa-facebook"></i> </a>
+                    </li>
+                    <li><a href="https://twitter.com/johnfrusciante" title="Twitter de John"> <i
+                                class="fab fa-twitter"></i>
+                        </a></li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FIM DIV INTEGRANTES -->
+
+    <!-- DIV HISTORIA -->
+
+    <section class="historia" id="historia">
+
+        <h1>A <span>história</span></h1>
+
+
+        <div class="container">
+
+
+            <!-- 1983 -->
+            <div class="card" id="ano_1983">
+                <h1>1983–1984: Formação e primeiro álbum</h1>
+                <p> &emsp; O Red Hot Chili Peppers tem seu embrião e seu feto desde 1979, nos intervalos entre aulas
+                    da
+                    Fairfax
+                    High School, em Hollywood, Los Angeles. Os garotos de 15 anos, Flea, Hillel Slovak e Jack Irons
+                    eram
+                    três amigos que tinham algumas ambições musicais formando a banda chamada Anthym. Um dos grandes
+                    admiradores dessa banda era Anthony Kiedis, também amigo de infância de Flea, Hillel e Irons.
+                    <br> ... <br>
+
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1983%E2%80%931984:_Forma%C3%A7%C3%A3o_e_primeiro_%C3%A1lbum">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe src="https://www.youtube.com/embed/qdi1br_qwL4" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+            </div>
+
+            <!-- 1985 -->
+            <div class="card" id="ano_1985">
+                <h1>1985–1988: Freaky Styley e morte de Slovak</h1>
+                <p> &emsp; Em 1985, os Peppers completamente perdidos, batem na porta de George Clinton para que ele
+                    produzisse o novo álbum, e então obrigam a gravadora a aceitá-lo como o novo produtor da banda.
+                    Clinton fica impressionado com o conhecimento musical deles. Então vem o novo álbum da banda, o
+                    Freaky Styley, com sua gravação feita em Detroit, na fazenda de Clinton, sai em setembro de 1985
+                    e
+                    recebe várias críticas positivas. <br> ... <br>
+
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1985%E2%80%931988:_Freaky_Styley,_The_Uplift_Mofo_Party_Plan_e_morte_de_Slovak">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UnoKaLhWQYk" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+            </div>
+
+
+
+            <!-- 1998 -->
+            <div class="card" id="ano_1988">
+                <h1>1988–1990: John Frusciante e Chad Smith </h1>
+                <p> &emsp; Anthony voltou para casa e Flea tornou-se pai de uma pequena menina chamada Clara,
+                    ocasião em
+                    que decidem reconstruir a banda em memória de seu grande amigo Hillel. Durante este tempo houve
+                    várias mudanças de guitarristas e bateristas nos Peppers, até que finalmente acham um novo
+                    guitarrista, John Frusciante de apenas 18 anos, que era um grande fã dos Peppers e de Hendrix.
+                    Quando aconteceu o primeiro show com a banda os fãs não acreditaram que ele nunca tivesse tocado
+                    com
+                    os Peppers antes. "John era absolutamente um clone de Hillel. Ele não toca somente igual ao
+                    Hillel,
+                    ele se move como o Hillel…", disse Alain Johannes. Coincidência ou não, John tinha realmente
+                    todo o
+                    estilo de Hillel pois era o seu ídolo. Depois de muito procurar, os Peppers também encontram um
+                    novo
+                    baterista, Chad Smith que veio de Detroit. <br> ... <br>
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1988%E2%80%931990:_Entrada_de_John_Frusciante_e_Chad_Smith,_Mother's_Milk">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HZySqMlEuSQ?" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+            <!-- 1990 -->
+            <div class="card" id="ano_1990">
+                <h1>1990-1992: Blood Sugar Sex Magik e sucesso </h1>
+                <p> &emsp; O genial Blood Sugar Sex Magik foi lançado no final de setembro de 1991. O álbum teve
+                    vários
+                    Hits, como: "Give It Away", "Under the Bridge" e "Suck My Kiss" que atingem o topo das paradas
+                    no
+                    mundo inteiro. Resultado, o disco torna-se sucesso mundial, vendendo nada menos que 19 milhões
+                    de
+                    cópias, apesar de haver uma grande concorrência naquela época, as bandas grunges, que para
+                    Kiedis
+                    não era problema algum porque primeiramente simpatizava com elas e tinha amigos como Nirvana,
+                    Pearl
+                    Jam, Alice in Chains e depois porque sabia que o estilo dessas bandas não tinha nada a ver com o
+                    som
+                    que eles faziam. <br> ... <br>
+
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1990-1992:_Blood_Sugar_Sex_Magik,_sucesso_e_a_sa%C3%ADda_de_Frusciante">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PslQBvYiX8Y" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+
+            <div class="anos3">
+                <!-- 1993 -->
+                <div class="card" id="ano_1993">
+                    <h1>1993-1997: One Hot Minute </h1>
+                    <p> &emsp; Os problemas não pararam por aí. Em 1993, após a primeira passagem da banda pelo Brasil
+                        (para
+                        a quarta edição do festival Hollywood Rock, com shows no Rio e em São Paulo), Flea foi
+                        diagnosticado
+                        com fadiga crônica e teve que descansar durante um ano para que se recuperasse. Em 31 de
+                        outubro, os
+                        Peppers perdem um dos seus melhores amigos: River Phoenix. Quando isto aconteceu, Flea ficou
+                        muito
+                        doente com a perda de uma importante pessoa de sua vida. Dave Navarro (ex-guitarrista do Jane's
+                        Addiction), que estava com o "Deconstruction" foi solicitado novamente para entrar no Red Hot
+                        Chili
+                        Peppers, para substituir definitivamente John Frusciante. E em 5 de setembro, Dave Navarro é
+                        anunciado como novo guitarrista do Red Hot Chili Peppers. <br> ... <br>
+
+                        <a href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1993-1997:_One_Hot_Minute">Saiba
+                            mais aqui!</a>
+                    </p>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/mbzeHX-6KBo" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <!-- 1998 -->
+                <div class="card" id="ano_1998">
+                    <h1>1998–2001: Retorno de Frusciante, Californication </h1>
+                    <p> &emsp; Nos anos seguintes a sua saída da banda, tornou-se público que John Frusciante tinha
+                        desenvolvido uma dependência de heroína, que o deixou em situação de pobreza e de quase morte.
+                        Admitiu ser internado no Las Encinas Drug Rehabilitation Center em janeiro de 1998. Ele concluiu
+                        o
+                        processo em fevereiro daquele ano e começou a alugar um pequeno apartamento em Silver Lake. Ele
+                        adquiriu muitas lesões e problemas nos anos de seu vício, exigindo uma cirurgia, que deixou
+                        cicatrizes permanentes em seus braços, um nariz reestruturado e novos dentes para prevenir uma
+                        infecção fatal. <br> ... <br>
+
+                        <a
+                            href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#1998%E2%80%932001:_Retorno_de_Frusciante,_Californication">Saiba
+                            mais aqui!</a>
+                    </p>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/uOeomS4GCCA" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+
+
+
+            <!-- 2005 -->
+            <div class="card" id="ano_2005">
+                <h1>2001-2004: By the Way e Slane Castle </h1>
+                <p> &emsp; Em julho de 2002, a banda lança o seu oitavo disco da carreira, intitulado By the Way.
+                    Todos
+                    os integrantes se livraram de vez das drogas. E assim continuava uma série de sucessos, mesmo
+                    sem as
+                    drogas. O álbum vendeu mais de um milhão de cópias só na primeira semana do lançamento,
+                    recebendo
+                    muitas críticas dos fãs, pois praticamente só haviam baladas românticas. Muito provavelmente por
+                    ter
+                    sido o primeiro álbum em anos que a banda fez sem usar nenhum tipo de droga. Mas, mesmo deixando
+                    o
+                    funk rock um pouco apagado, o álbum tinha algumas canções de destaque, como "Dosed", "The Zephyr
+                    Song", "By the Way" e "Can't Stop". Também foi nesse álbum que surgiu uma das primeiras críticas
+                    à
+                    mídia vinda dos Peppers, com a canção "Throw Away Your Television" (Jogue fora sua televisão).
+                    <br> ... <br>
+
+
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#2001-2004:_By_the_Way,_Live_at_Slane_Castle_e_Greatest_Hits">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/u1Wr75MV7SA" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+
+
+            <!-- 2017 -->
+            <div class="card" id="ano_2017">
+                <h1>2017- presente: próximo álbum e John Frusciante</h1>
+                <p> &emsp; Em 18 de março de 2017, o vocalista Anthony Kiedis deu uma entrevista a uma estação de
+                    rádio de Vancouver e indicou que, para o seguimento da banda ao The Getaway, eles provavelmente
+                    trabalhariam novamente com o Danger Mouse como seu produtor. Ele disse: "Eu acho que é bom
+                    trabalhar com o mesmo cara de novo, você sabe que você teve sua primeira experiência. Acho que
+                    devemos a
+                    nós mesmos começar do começo com esse cara e ver o que podemos realizar". <br>
+
+                    ... <br>
+
+
+                    <a
+                        href="https://pt.wikipedia.org/wiki/Red_Hot_Chili_Peppers#2017-_presente:_pr%C3%B3ximo_%C3%A1lbum_de_est%C3%BAdio_e_retorno_de_John_Frusciante">Saiba
+                        mais aqui!</a>
+                </p>
+
+                <iframe src="https://www.youtube.com/embed/QniUFTG3GTs" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+    <footer>
+        <div class="container">
+            <p>
+                José L. M. Queiroz © <span id="ano_footer"></span> <br> <br>
+
+                Todos os direitos reservados <br> <br>
+
+                Feito com ❤ por @joze_lucas <br> <br>
+
+                
+                <a target="_blank" href="https://www.linkedin.com/in/jos%C3%A9-lucas-marinho-queiroz-8857381ab/"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a target="_blank" href="https://github.com/jose-lucas-mq"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="https://www.instagram.com/joze_lucas/ "><i class="fab fa-instagram"></i></a>
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2874820179054!2d-46.66380268538395!3d-23.558116367356718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2b063f663%3A0xc567c0d16d0bc582!2sBandtec%20Digital%20School!5e0!3m2!1spt-BR!2sbr!4v1591333696259!5m2!1spt-BR!2sbr"
+                class="maps"></iframe>
+        </div>
+    </footer>
+
+
 </body>
 
 </html>
+
+<script>
+    function entrar() {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.email_fan;
+                    sessionStorage.nome_usuario_meuapp = json.nome_fan;
+                    sessionStorage.sexo_usuario_meuapp = json.sexo_fan;
+                    sessionStorage.album_usuario_meuapp = json.album_fav;
+                    
+                    
+                    window.location.href = 'index_perfil.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+    function cadastrar() {
+
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='perfil.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                     alert(resposta);
+                });
+            }
+        });
+
+        return false;
+    }
+</script>
+
+<script src="./js/menu_itens.js"></script>
+<script src="./js/senha.js"></script>
+<script src="./js/modal.js"></script>
+<script src="./js/validation.js"></script>
+
+<!-- <script src="./js/aleatorias.js"></script> -->

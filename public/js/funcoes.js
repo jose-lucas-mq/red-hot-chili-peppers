@@ -17,17 +17,21 @@ function verificar_autenticacao() {
     sexo_usuario = sessionStorage.sexo_usuario_meuapp;
     album_usuario = sessionStorage.album_usuario_meuapp;
 
-    debugger;
     if (login_usuario == undefined) {
         redirecionar_login();
     } else {
-        
-        span_nome_usuario.innerHTML = nome_usuario;
-
         nome_fan.innerHTML = nome_usuario;
         email_fan.innerHTML = login_usuario;
-        sexo_fan.innerHTML = sexo_usuario;
+        
         album_fan.innerHTML = album_usuario;
+
+
+        if(sexo_usuario === 'M'){
+            sexo_fan.innerHTML = 'Masculino';
+        }else{
+            sexo_fan.innerHTML = 'Feminino';
+        }
+
         validar_sessao();
     }
 

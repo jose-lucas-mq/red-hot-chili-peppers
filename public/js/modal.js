@@ -2,7 +2,12 @@
 
 function open_modal_login(){
     login.style.display = 'block';
+
+    close_modal_cadastro();
+
     event.preventDefault();
+
+    
 }
 
 function close_modal_login(){
@@ -13,8 +18,10 @@ function close_modal_login(){
 
 function open_modal_cadastro(){
     cadastro.style.display = 'block';
-    event.preventDefault();
 
+    close_modal_login();
+
+    event.preventDefault();
 }
 
 function close_modal_cadastro(){

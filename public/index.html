@@ -627,8 +627,11 @@
         }).then(function (response) {
             
             if (response.ok) {
+                alert(`Cadastro realizado com sucesso ${nome.value}, faça seu login!`);
+                open_modal_login();                
 
-                window.location.href='perfil.html';
+                
+                
 
             } else {
 
@@ -648,4 +651,4 @@
 <script src="./js/modal.js"></script>
 <script src="./js/validation.js"></script>
 
-<!-- <script src="./js/aleatorias.js"></script> -->
+<!-- <script src="./js/aleatorias.js"></script> --> 

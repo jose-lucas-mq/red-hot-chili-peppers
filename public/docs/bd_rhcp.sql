@@ -20,21 +20,9 @@ CREATE TABLE tb_fan(
 
 
 SELECT * FROM tb_fan;
-DESC tb_fan;
 
 
 SELECT * FROM tb_email;
-DESC tb_email;
 
 
-INSERT INTO tb_email
-	VALUES 
-		(null, 'jose2002lucas@gmail.com'),
-        (null, 'basquete2402@gmail.com'),
-        (null, 'sebastiao1977jose@gmail.com');
-        
-        
-INSERT INTO tb_fan
-	VALUES 
-		(null,'jose2002lucas@gmail.com','Jose Lucas Marinho Queiroz','#Gfpassword','M','By The Way');
-        
+

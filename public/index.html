@@ -34,7 +34,8 @@
             <form id="form_login" method="post" onsubmit="return entrar()">
                 <input type="email" name="login" placeholder="Email" required> <br>
                 <div class="inputBox">
-                    <input type="password" name="senha" maxlength="20" placeholder="Digite sua senha" id="password_log" />
+                    <input type="password" name="senha" maxlength="20" placeholder="Digite sua senha"
+                        id="password_log" />
                     <div onclick="showHide_log()" class="toggle">
                         <i class="far fa-eye"></i>
                     </div>
@@ -55,11 +56,10 @@
             <h1>Faça seu cadastro</h1>
 
             <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-                <input type="email" id="email" name="login"  placeholder="Email" > <br>
+                <input type="email" id="email" name="login" placeholder="Email"> <br>
 
                 <div class="inputBox">
-                    <input type="password" name="senha" id="senha" maxlength="20"  placeholder="Digite sua senha"
-                         />
+                    <input type="password" name="senha" id="senha" maxlength="20" placeholder="Digite sua senha" />
                     <div onclick="showHide()" class="toggle">
                         <i class="far fa-eye"></i>
                     </div>
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-   
+
 
     <!--
         MENU
@@ -186,8 +186,8 @@
         <div class="container">
             <h1>Não perca novidades sobre a banda!</h1>
 
-            <form>
-                <input type="text" placeholder="Digite seu email aqui">
+            <form id="form_email" method="post" onsubmit="return cadastrarEmail()">
+                <input type="text" name="seu_email" id="seu_email" placeholder="Digite seu email aqui">
 
                 <button>Enviar</button>
             </form>
@@ -563,7 +563,7 @@
 
                 Feito com ❤ por @joze_lucas <br> <br>
 
-                
+
                 <a target="_blank" href="https://www.linkedin.com/in/jos%C3%A9-lucas-marinho-queiroz-8857381ab/"><i
                         class="fab fa-linkedin-in"></i></a>
                 <a target="_blank" href="https://github.com/jose-lucas-mq"><i class="fab fa-github"></i></a>
@@ -582,14 +582,16 @@
 </html>
 
 <script>
+
+    // FAZENDO LOGIN
     function entrar() {
-        // aguardar();
+        
         var formulario = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
             method: "POST",
             body: formulario
         }).then(resposta => {
-            
+
             if (resposta.ok) {
 
                 resposta.json().then(json => {
@@ -598,8 +600,8 @@
                     sessionStorage.nome_usuario_meuapp = json.nome_fan;
                     sessionStorage.sexo_usuario_meuapp = json.sexo_fan;
                     sessionStorage.album_usuario_meuapp = json.album_fav;
-                    
-                    
+
+
                     window.location.href = 'index_perfil.html';
                 });
 
@@ -617,6 +619,7 @@
         return false;
     }
 
+    // CADASTRANDO FAN
 
     function cadastrar() {
 
@@ -625,25 +628,50 @@
             method: "POST",
             body: formulario
         }).then(function (response) {
-            
+
             if (response.ok) {
                 alert(`Cadastro realizado com sucesso ${nome.value}, faça seu login!`);
-                open_modal_login();                
+                open_modal_login();
 
-                
-                
+
+
 
             } else {
 
                 console.log('Erro de cadastro!');
                 response.text().then(function (resposta) {
-                     alert(resposta);
+                    alert(resposta);
                 });
             }
         });
 
         return false;
     }
+
+    // CADASTRANDO EMAIL
+    // function cadastrarEmail() {
+
+    //     var formulario = new URLSearchParams(new FormData(form_email));
+    //     fetch("/usuarios/cadastrar-email", {
+    //         method: "POST",
+    //         body: formulario
+    //     }).then(function (response) {
+
+    //         if (response.ok) {
+    //             alert(`Obrigado por enviar seu email!`);
+    //             seu_email.value = '';
+    
+    //         } else {
+
+    //             console.log('Erro de cadastro!');
+    //             response.text().then(function (resposta) {
+    //                 alert(resposta);
+    //             });
+    //         }
+    //     });
+
+    //     return false;
+    // }
 </script>
 
 <script src="./js/menu_itens.js"></script>
@@ -651,4 +679,4 @@
 <script src="./js/modal.js"></script>
 <script src="./js/validation.js"></script>
 
-<!-- <script src="./js/aleatorias.js"></script> --> 
+<script src="./js/aleatorias.js"></script>

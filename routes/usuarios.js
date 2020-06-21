@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Usuario = require('../models').Usuario;
+var ins_email = require('../models').ins_email;
 
 let sessoes = [];
 
@@ -54,6 +55,22 @@ router.post('/cadastrar', function(req, res, next) {
 		res.status(500).send(erro.message);
   	});
 });
+
+
+// Cadastrar email
+// router.post('/cadastrar-email', function(req, res, next) {
+// 	console.log('Adicionando email');
+	
+// 	ins_email.create({
+// 		email : req.body.seu_email
+// 	}).then(resultado => {
+// 		console.log(`Registro criado: ${resultado}`)
+//         res.send(resultado);
+//     }).catch(erro => {
+// 		console.error(erro);
+// 		res.status(500).send(erro.message);
+//   	});
+// });
 
 
 /* Verificação de usuário */

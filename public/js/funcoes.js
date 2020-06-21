@@ -43,7 +43,7 @@ function logoff() {
     redirecionar_login();
 }
 
-function validar_sessao() {
+function    validar_sessao() {
     fetch(`/usuarios/sessao/${login_usuario}`, { cache: 'no-store' })
         .then(resposta => {
             if (resposta.ok) {

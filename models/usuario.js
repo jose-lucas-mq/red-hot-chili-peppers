@@ -48,3 +48,28 @@ module.exports = (sequelize, DataTypes) => {
 
     return Usuario;
 };
+
+// module.exports = (sequelize, DataTypes) => {
+//     let ins_email = sequelize.define('ins_email',{
+// 		id: {
+// 			field: 'id_email',
+// 			type: DataTypes.INTEGER,
+// 			primaryKey: true,
+// 			autoIncrement: true
+// 		},		
+// 		email: {
+// 			field: 'dominio_email',
+// 			type: DataTypes.STRING,
+// 			allowNull: false
+// 		}
+// 	}, 
+// 	{
+// 		tableName: 'tb_email', 
+// 		freezeTableName: true, 
+// 		underscored: true,
+// 		timestamps: false,
+// 	});
+
+//     return ins_email;
+// };
+
